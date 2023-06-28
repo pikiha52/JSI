@@ -209,7 +209,7 @@ export default {
                 }
             }).then(response => {
                     console.log('Data berhasil diperbarui:', response.data);
-                    this.newUser = false
+                    this.closeModalNewUser()
                     this.getUsersData()
                 })
                 .catch(error => {

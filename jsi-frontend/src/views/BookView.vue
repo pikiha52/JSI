@@ -212,7 +212,7 @@ export default {
                     }
                 }).then(response => {
                     console.log('Data berhasil diperbarui:', response.data);
-                    this.newBook = false
+                    this.closeModalNewBook()
                     this.listBooks()
                 })
                 .catch(error => {

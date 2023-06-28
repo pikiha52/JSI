@@ -23,7 +23,7 @@
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                             <button type="button" @click="showModalNew" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
-                                </button>
+                            </button>
                         </div>
                     </div>
                     <div class="flex items-center">
@@ -192,7 +192,7 @@ export default {
                 this.searchQuery = ''
                 alert("Failed to query")
             }
-        },  
+        },
         getBorrowList: async function () {
             axios.request({
                 url: 'http://localhost:80/api/borrows',
@@ -279,6 +279,8 @@ export default {
         closeModal() {
             this.selectedItem = null;
             this.selectedUser = null;
+            this.usersDropdown = []
+            this.bookDropdown = []
         },
         showModalNew() {
             this.newBorrow = true;
@@ -287,24 +289,28 @@ export default {
         },
         closeModalNew() {
             this.newBorrow = false;
+            this.usersDropdown = []
+            this.bookDropdown = []
         },
         storeNewBorrow(event) {
             event.preventDefault()
             axios.request({
-                url: 'http://localhost:80/api/borrow',
-                method: 'POST',
-                data: {
-                    user_id: this.selectedUser,
-                    book_id: this.selectedBook,
-                    borrow_date: this.borrow_date
-                }
-            }).then(response => {
+                    url: 'http://localhost:80/api/borrow',
+                    method: 'POST',
+                    data: {
+                        user_id: this.selectedUser,
+                        book_id: this.selectedBook,
+                        borrow_date: this.borrow_date
+                    }
+                }).then(response => {
                     console.log('Data berhasil diperbarui:', response.data);
                     this.selectedUser = null;
                     this.selectedBook = null;
                     this.borrow_date = '';
                     this.newBorrow = false;
                     this.getBorrowList()
+                    this.usersDropdown = []
+                    this.bookDropdown = []
                 })
                 .catch(error => {
                     console.error('Terjadi kesalahan saat memperbarui data:', error);
