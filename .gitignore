@@ -1,0 +1,13 @@
+/.phpunit.cache
+/jsi-fullstack/node_modules
+/jsi-fullstack/public/build
+/jsi-fullstack/public/hot
+/jsi-fullstack/public/storage
+/jsi-fullstack/storage/*.key
+/jsi-fullstack/vendor
+/jsi-fullstack/.env
+/jsi-fullstack/.env.backup
+/jsi-fullstack/.env.production
+/jsi-fullstack/.phpunit.result.cache
+/jsi-fullstack/Homestead.json
+/jsi-fullstack/Homestead.yaml
